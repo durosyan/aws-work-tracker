@@ -63,17 +63,14 @@ The architecture is modular and scalable:
 
 ```mermaid
 graph TD
-  A[Frontend UI (S3 Hosted)] --> B[API Gateway]
-
-  B --> C1[Lambda: Clock In]
-  B --> C2[Lambda: Clock Out]
-  B --> C3[Lambda: Break Toggle]
-
-  C1 --> D[DynamoDB]
-  C2 --> D
-  C3 --> D
-
-  D --> E[Response Sent Back to Frontend]
+A[Frontend UI (S3 Hosted)] --> B[API Gateway]
+B --> C1[Lambda: Clock In]
+B --> C2[Lambda: Clock Out]
+B --> C3[Lambda: Break Toggle]
+C1 --> D[DynamoDB]
+C2 --> D
+C3 --> D
+D --> E[Response Sent Back to Frontend]
 ```
 
 ---
