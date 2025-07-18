@@ -61,6 +61,7 @@ The architecture is modular and scalable:
 
 ## 🖼️ System Diagram
 
+```mermaid
 graph TD
   A[Frontend UI (S3 Hosted)] --> B[API Gateway]
 
@@ -73,6 +74,7 @@ graph TD
   C3 --> D
 
   D --> E[Response Sent Back to Frontend]
+```
 
 ---
 
