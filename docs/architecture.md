@@ -63,7 +63,7 @@ The architecture is modular and scalable:
 
 ```mermaid
 graph TD
-A[Frontend UI (S3 Hosted)] --> B[API Gateway]
+A[Frontend UI] --> B[API Gateway]
 B --> C1[Lambda: Clock In]
 B --> C2[Lambda: Clock Out]
 B --> C3[Lambda: Break Toggle]
