@@ -1,0 +1,51 @@
+name: Lint & Plan Terraform
+
+on:
+  pull_request:
+    paths:
+      - 'infrastructure/terraform/**'
+      - '.github/workflows/deploy.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'infrastructure/terraform/**'
+      - '.github/workflows/deploy.yml'
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Format (Lint)
+        run: terraform fmt -check -recursive
+        working-directory: infrastructure/terraform
+
+    #   - name: Terraform Init
+    #     run: terraform init
+    #     working-directory: infrastructure/terraform
+
+    #   - name: Terraform Validate
+    #     run: terraform validate
+    #     working-directory: infrastructure/terraform
+
+    #   - name: Terraform Plan
+    #     id: plan
+    #     run: terraform plan -out=tfplan.binary | tee plan.log
+    #     working-directory: infrastructure/terraform
+
+    #   - name: Upload plan log
+    #     uses: actions/upload-artifact@v4
+    #     with:
+    #       name: terraform-plan-log
+    #       path: infrastructure/terraform/plan.log
+
+    #   - name: Show plan in summary
+    #     run: |
+    #       echo '### Terraform Plan' >> $GITHUB_STEP_SUMMARY
+    #       cat infrastructure/terraform/plan.log >> $GITHUB_STEP_SUMMARY
