@@ -1,11 +1,11 @@
 terraform {
   required_version = ">= 0.12"
-  
+
   backend "s3" {
-    bucket         = "<YOUR_STATE_BUCKET_NAME>"
+    bucket         = "aws-work-tracker-tf-state"
     key            = "terraform.tfstate"
-    region         = "<YOUR_AWS_REGION>"
-    dynamodb_table = "<YOUR_DYNAMODB_TABLE_NAME>" # optional, for state locking
+    region         = "eu-central-1"
+    dynamodb_table = "aws-work-tracker-tf-locker" # optional, for state locking
     encrypt        = true
   }
 
