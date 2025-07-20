@@ -9,7 +9,7 @@ I'm creating this tool to demonstrate that I can orchestrate a tool and develop 
 I will admit this is an overkill solution for this problem, but it helps me learn these different things.
 
 - [docs/architecture](docs/architecture.md)
-- [docs/roadmap](docs/roadmap.md)
+- [docs/journal](docs/journal.md)
 - [docs/usage](docs/usage_guide.md)
 
 ---
