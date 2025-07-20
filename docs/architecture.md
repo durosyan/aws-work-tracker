@@ -61,6 +61,14 @@ The architecture is modular and scalable:
 
 ## 🖼️ System Diagram
 
+
+ <!-- 
+ 
+ - https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams#creating-mermaid-diagrams
+ - https://github.blog/developer-skills/github/include-diagrams-markdown-files-mermaid/
+ 
+  -->
+  
 ```mermaid
 graph TD
 A[Frontend UI] --> B[API Gateway]
@@ -82,4 +90,5 @@ This architecture highlights:
 - A serverless-first mindset using AWS-native tools
 - Infrastructure automation using Terraform
 - Real-world applicability for shift-based scheduling
+- Written in typescript
 
