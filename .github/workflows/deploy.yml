@@ -22,9 +22,13 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
 
-      - name: Terraform Format (Lint)
+      - name: Terraform Format (Lint) - Main
         run: terraform fmt -check -recursive
         working-directory: infrastructure/terraform
+
+      - name: Terraform Format (Lint) - Bootstrap
+        run: terraform fmt -check -recursive
+        working-directory: infrastructure/bootstrap
 
     #   - name: Terraform Init
     #     run: terraform init
