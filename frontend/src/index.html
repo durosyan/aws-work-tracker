@@ -190,12 +190,35 @@
         </div>
     </div>
 
-    <!-- ...existing code... -->
     <button class="toggle-mode" id="toggleModeBtn" onclick="toggleTheme()">
         <span class="material-symbols-outlined">moon_stars</span>
     </button>
 
     <script>
+        // === API CONFIG ===
+        // Set this to your deployed API Gateway endpoint (see Terraform output)
+        const API_BASE_URL = window.API_BASE_URL || "<PASTE_API_GATEWAY_URL_HERE>";
+
+        async function callApi(path) {
+            try {
+                const res = await fetch(`${API_BASE_URL}${path}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'omit'
+                });
+                if (!res.ok) throw new Error(await res.text());
+                alert('Success!');
+            } catch (err) {
+                alert('Error: ' + err.message);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.button-group button:nth-child(1)').onclick = () => callApi('/clock_in');
+            document.querySelector('.button-group button:nth-child(2)').onclick = () => callApi('/clock_out');
+            document.getElementById('breakToggle').onchange = () => callApi('/break_toggle');
+        });
+
         function updateToggleButtonText() {
             const body = document.body;
             const btn = document.getElementById('toggleModeBtn');
@@ -216,7 +239,6 @@
         // Set correct button text on initial load
         updateToggleButtonText();
     </script>
-    <!-- ...existing code... -->
 </body>
 
 </html>
