@@ -15,18 +15,6 @@ openssl s_client -servername token.actions.githubusercontent.com -connect token.
   | tr '[:upper:]' '[:lower:]'
 ```
 
-## 📚 Why SHA-1?
-
-The thumbprint used in AWS's `aws_iam_openid_connect_provider` resource is a **SHA-1 hash of the TLS certificate** from the OIDC provider. This is confirmed in multiple sources:
-
-- GitHub’s own [OIDC documentation](https://docs.github.com/en/actions/reference/openid-connect-reference) explains that AWS uses the SHA-1 fingerprint to verify GitHub’s identity.
-- Stack Overflow also clarifies that the thumbprint is a SHA-1 hash of the public certificate from the OIDC endpoint.
-- GitHub community guides like [this one](https://github.com/KeenGWatanabe/oidc2/blob/main/oidc-thumbprint.md) reinforce that the thumbprint must be SHA-1, lowercase, and colon-free.
-
-This fingerprint ensures AWS can validate that GitHub is the real issuer of the token — preventing man-in-the-middle attacks.
-
----
-
 ## 🔄 How the Authentication Flow Works
 
 Here’s a simplified breakdown of how GitHub Actions authenticates with AWS using OIDC:
@@ -42,8 +30,6 @@ flowchart TD
   G --> H[Temporary AWS credentials issued]
   H --> I[Terraform Plan executed with AWS access]
 ```
-
----
 
 ## 🧠 Summary of Key Steps
 
