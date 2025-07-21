@@ -1,0 +1,42 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudformation:DescribeChangeSet",
+        "cloudformation:DescribeStackResources",
+        "cloudformation:DescribeStacks",
+        "cloudformation:GetTemplate",
+        "cloudformation:List*",
+        "cloudwatch:*",
+        "cognito-identity:*",
+        "cognito-sync:*",
+        "cognito-idp:*",
+        "dynamodb:*",
+        "ec2:Describe*",
+        "iam:Get*",
+        "iam:List*",
+        "iam:PassRole",
+        "iam:CreateServiceLinkedRole",
+        "lambda:*",
+        "logs:*",
+        "s3:*",
+        "apigateway:*",
+        "ssm:GetParameters",
+        "ssm:GetParameter",
+        "ssm:DescribeParameters",
+        "ssm:GetParameterHistory",
+        "route53:*",
+        "events:*",
+        "kms:List*",
+        "kms:Describe*",
+        "kms:CreateGrant",
+        "kms:GenerateDataKey*",
+        "kms:Encrypt",
+        "kms:Decrypt"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
