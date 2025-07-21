@@ -1,4 +1,4 @@
-## AWS Zero Hours Tracker
+# AWS Zero Hours Tracker
 
 I have a zero hour contract with an activity centre. This means I get to work with no set time schedule.
 
@@ -11,6 +11,7 @@ I will admit this is an overkill solution for this problem, but it helps me lear
 - [docs/architecture](docs/architecture.md)
 - [docs/journal](docs/journal/journal.md)
 - [docs/usage](docs/usage_guide.md)
+- [docs/deployment.md](./docs/deployment.md)
 
 ---
 
