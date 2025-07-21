@@ -1,5 +1,3 @@
-# Frontend Deployment CI/CD for AWS S3
-
 name: Deploy Frontend to S3
 
 on:
