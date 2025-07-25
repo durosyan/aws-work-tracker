@@ -1,5 +1,5 @@
 terraform {
-  required_version = ">= 0.12"
+  required_version = ">= 1.12.0"
 
   backend "s3" {
     bucket       = "aws-work-tracker-tf-state"
@@ -12,7 +12,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.0"
+      version = "~> 5.81.0"
     }
   }
 }
