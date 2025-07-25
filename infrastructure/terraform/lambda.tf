@@ -4,8 +4,8 @@ resource "aws_iam_role" "lambda_exec" {
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
     Statement = [{
-      Action = "sts:AssumeRole",
-      Effect = "Allow",
+      Action    = "sts:AssumeRole",
+      Effect    = "Allow",
       Principal = { Service = "lambda.amazonaws.com" }
     }]
   })
@@ -22,11 +22,11 @@ resource "aws_iam_role_policy_attachment" "lambda_dynamodb" {
 }
 
 resource "aws_lambda_function" "clock_in" {
-  function_name = "clock_in"
-  handler       = "index.handler"
-  runtime       = "nodejs20.x"
-  role          = aws_iam_role.lambda_exec.arn
-  filename      = data.archive_file.clock_in.output_path
+  function_name    = "clock_in"
+  handler          = "index.handler"
+  runtime          = "nodejs20.x"
+  role             = aws_iam_role.lambda_exec.arn
+  filename         = data.archive_file.clock_in.output_path
   source_code_hash = data.archive_file.clock_in.output_base64sha256
   environment {
     variables = {
@@ -36,11 +36,11 @@ resource "aws_lambda_function" "clock_in" {
 }
 
 resource "aws_lambda_function" "clock_out" {
-  function_name = "clock_out"
-  handler       = "index.handler"
-  runtime       = "nodejs20.x"
-  role          = aws_iam_role.lambda_exec.arn
-  filename      = data.archive_file.clock_out.output_path
+  function_name    = "clock_out"
+  handler          = "index.handler"
+  runtime          = "nodejs20.x"
+  role             = aws_iam_role.lambda_exec.arn
+  filename         = data.archive_file.clock_out.output_path
   source_code_hash = data.archive_file.clock_out.output_base64sha256
   environment {
     variables = {
@@ -50,11 +50,11 @@ resource "aws_lambda_function" "clock_out" {
 }
 
 resource "aws_lambda_function" "break_toggle" {
-  function_name = "break_toggle"
-  handler       = "index.handler"
-  runtime       = "nodejs20.x"
-  role          = aws_iam_role.lambda_exec.arn
-  filename      = data.archive_file.break_toggle.output_path
+  function_name    = "break_toggle"
+  handler          = "index.handler"
+  runtime          = "nodejs20.x"
+  role             = aws_iam_role.lambda_exec.arn
+  filename         = data.archive_file.break_toggle.output_path
   source_code_hash = data.archive_file.break_toggle.output_base64sha256
   environment {
     variables = {
@@ -104,26 +104,26 @@ resource "aws_apigatewayv2_api" "http_api" {
 }
 
 resource "aws_apigatewayv2_integration" "clock_in" {
-  api_id           = aws_apigatewayv2_api.http_api.id
-  integration_type = "AWS_PROXY"
-  integration_uri  = aws_lambda_function.clock_in.invoke_arn
-  integration_method = "POST"
+  api_id                 = aws_apigatewayv2_api.http_api.id
+  integration_type       = "AWS_PROXY"
+  integration_uri        = aws_lambda_function.clock_in.invoke_arn
+  integration_method     = "POST"
   payload_format_version = "2.0"
 }
 
 resource "aws_apigatewayv2_integration" "clock_out" {
-  api_id           = aws_apigatewayv2_api.http_api.id
-  integration_type = "AWS_PROXY"
-  integration_uri  = aws_lambda_function.clock_out.invoke_arn
-  integration_method = "POST"
+  api_id                 = aws_apigatewayv2_api.http_api.id
+  integration_type       = "AWS_PROXY"
+  integration_uri        = aws_lambda_function.clock_out.invoke_arn
+  integration_method     = "POST"
   payload_format_version = "2.0"
 }
 
 resource "aws_apigatewayv2_integration" "break_toggle" {
-  api_id           = aws_apigatewayv2_api.http_api.id
-  integration_type = "AWS_PROXY"
-  integration_uri  = aws_lambda_function.break_toggle.invoke_arn
-  integration_method = "POST"
+  api_id                 = aws_apigatewayv2_api.http_api.id
+  integration_type       = "AWS_PROXY"
+  integration_uri        = aws_lambda_function.break_toggle.invoke_arn
+  integration_method     = "POST"
   payload_format_version = "2.0"
 }
 
